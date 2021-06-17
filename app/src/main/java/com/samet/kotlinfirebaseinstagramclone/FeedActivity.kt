@@ -6,15 +6,24 @@ import android.view.Menu
 import android.view.MenuItem
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.google.firebase.Timestamp
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
+import kotlinx.android.synthetic.main.activity_feed.*
 
 class FeedActivity : AppCompatActivity() {
 
 
     private lateinit var db: FirebaseFirestore
     private lateinit var auth: FirebaseAuth
+
+    var userEmailFromFirebase: ArrayList<String> = ArrayList()
+    var userCommentFromFirebase: ArrayList<String> = ArrayList()
+    var userImageFromFirebase: ArrayList<String> = ArrayList()
+
+    var adapter: FeedRecyclerAdapter? = null
+
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
 
         val menuInflater = menuInflater
@@ -47,6 +56,19 @@ class FeedActivity : AppCompatActivity() {
         db = FirebaseFirestore.getInstance()
 
         getDataFromFireStore()
+
+        //RecyclerView Adapter
+
+        var layoutManager = LinearLayoutManager(this)
+        recyclerView.layoutManager = layoutManager
+
+        adapter = FeedRecyclerAdapter(
+            userEmailFromFirebase,
+            userCommentFromFirebase,
+            userImageFromFirebase
+        )
+        recyclerView.adapter = adapter
+
     }
 
     fun getDataFromFireStore() {
@@ -62,7 +84,11 @@ class FeedActivity : AppCompatActivity() {
             } else {
                 if (snapshot != null) {
                     if (!snapshot.isEmpty) {
+                        userImageFromFirebase.clear()
+                        userCommentFromFirebase.clear()
+                        userEmailFromFirebase.clear()
                         val documents = snapshot.documents
+
                         for (document in documents) {
                             val comment = document.get("comment") as String
                             val userEmail = document.get("userEmail") as String
@@ -70,6 +96,11 @@ class FeedActivity : AppCompatActivity() {
                             val timestamp = document.get("date") as Timestamp
                             val date = timestamp.toDate()
 
+                            userEmailFromFirebase.add(userEmail)
+                            userCommentFromFirebase.add(comment)
+                            userImageFromFirebase.add(downloadUrl)
+
+                            adapter!!.notifyDataSetChanged()
                         }
                     }
                 }
