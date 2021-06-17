@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/recyclerViewText"
     android:layout_width="match_parent"
@@ -8,16 +7,12 @@
     android:paddingTop="10dp">
 
     <LinearLayout
-        android:id="@+id/linearLayout"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
         android:orientation="vertical"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        tools:layout_editor_absoluteY="10dp">
 
-        <TextureView
+        <TextView
             android:id="@+id/recyclerEmailText"
             android:layout_width="match_parent"
             android:layout_height="37dp"
@@ -26,7 +21,8 @@
             android:text="TextView"
             android:textColor="#3F51B5"
             android:textSize="24sp"
-            android:textStyle="bold|italic" />
+            android:textStyle="bold|italic"
+            tools:ignore="MissingConstraints" />
 
         <ImageView
             android:id="@+id/recyclerImageView"
@@ -34,15 +30,19 @@
             android:layout_height="206dp"
             android:layout_gravity="center"
             android:paddingTop="10dp"
+            tools:ignore="MissingConstraints"
             tools:srcCompat="@tools:sample/avatars" />
 
-        <TextureView
+        <TextView
             android:id="@+id/recyclerCommentText"
             android:layout_width="match_parent"
             android:layout_height="60dp"
             android:paddingLeft="20dp"
             android:paddingTop="10dp"
             android:text="TextView"
-            android:textSize="20sp" />
+            android:textSize="20sp"
+            tools:ignore="MissingConstraints" />
+
     </LinearLayout>
+
 </androidx.constraintlayout.widget.ConstraintLayout>
