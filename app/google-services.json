@@ -1,33 +1,33 @@
 {
   "project_info": {
-    "project_number": "50988944439",
+    "project_number": "579448019073",
     "project_id": "kotlinfirebaseinstagramc-3ace5",
     "storage_bucket": "kotlinfirebaseinstagramc-3ace5.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:50988944439:android:3d8cd883deef3b98ad03b2",
+        "mobilesdk_app_id": "app_id",
         "android_client_info": {
           "package_name": "com.samet.kotlinfirebaseinstagramclone"
         }
       },
       "oauth_client": [
         {
-          "client_id": "50988944439-6i4dklp9dekt3ba3ho02dc3onco2jo9a.apps.googleusercontent.com",
+          "client_id": "client_id",
           "client_type": 3
         }
       ],
       "api_key": [
         {
-          "current_key": "AIzaSyBqR4wj9Wsdf2m3FUyLQCV_4hIbLcBOEgA"
+          "current_key": "current_key"
         }
       ],
       "services": {
         "appinvite_service": {
           "other_platform_oauth_client": [
             {
-              "client_id": "50988944439-6i4dklp9dekt3ba3ho02dc3onco2jo9a.apps.googleusercontent.com",
+              "client_id": "client_key",
               "client_type": 3
             }
           ]
